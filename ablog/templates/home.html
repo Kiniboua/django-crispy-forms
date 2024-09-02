@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            {% crispy form %}
+            <button type="button" class="btn btn-primary btn-lg">Large button</button>
+        </div>
+    </div>
+{% endblock %}
