@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserChangeForm, AuthenticationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.urls import reverse_lazy
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 
@@ -17,13 +18,13 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = UserCreationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
             return redirect('home')
     else:
-        form = AuthenticationForm()
+        form = UserCreationForm()
     return render(request, 'authentication/login.html',{'form':form})
 
 def logout(request):

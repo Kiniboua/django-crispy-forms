@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .forms import UniversityForm
+from .forms import CustomUserCreationForm
 
 def home(request):
-    context = {'form': UniversityForm}
+    context = {'form': CustomUserCreationForm()}
     return render(request, 'index.html', context)
